@@ -2,7 +2,6 @@
 import { useState } from 'react';
 
 export default function BlackjackAdvertorial() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,117 +43,94 @@ export default function BlackjackAdvertorial() {
   };
 
   return (
-    <div className="page" style={{ background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-      <div className="container" style={{ textAlign: 'center', maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: '#fff', marginBottom: '20px', lineHeight: '1.2' }}>
-          הסוד של שחקני הבלאקג'ק המקצועיים
+    <div dir="rtl" className="min-h-screen bg-[#09090b] flex flex-col items-center justify-center p-4 sm:p-8 font-sans relative overflow-hidden text-right">
+      
+      {/* Background glow effects to match lovable */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div className="z-10 flex flex-col items-center max-w-lg w-full mt-4">
+        
+        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-2 leading-tight">
+          <span className="text-[#eab308] block mb-1 drop-shadow-sm">הקהילה הפרטית</span>
+          <span className="text-white block drop-shadow-sm">של חובבי הבלאק ג'ק בישראל</span>
         </h1>
         
-        <p className="subtitle" style={{ color: '#cbd5e1', fontSize: '1.2rem', marginBottom: '40px', lineHeight: '1.6' }}>
-          בלאקג'ק הוא הרבה יותר ממשחק של מזל - זהו משחק של אסטרטגיה, חשיבה מהירה ויכולת קבלת החלטות.
-          הצטרפו עכשיו לשולחן, גלו את האסטרטגיות המנצחות והתחילו לשחק כמו מקצוענים.
+        <p className="text-zinc-400 text-center mb-8 text-base sm:text-lg max-w-md mx-auto">
+          מקום סגור לאנשים שבאמת אוהבים את המשחק. מה שקורה בפנים – נשאר בפנים.
         </p>
 
-        <button 
-          onClick={() => setIsPopupOpen(true)}
-          className="cta" 
-          style={{ 
-            background: '#ff6b00', color: '#fff', textShadow: 'none', 
-            padding: '0 clamp(20px, 5vw, 50px)', fontSize: 'clamp(1.2rem, 5vw, 1.5rem)', height: 'clamp(60px, 15vw, 70px)', 
-            borderRadius: '15px', border: 'none', cursor: 'pointer',
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: '100%', maxWidth: '300px'
-          }}
-        >
-          למידע נוסף
-        </button>
-      </div>
+        <div className="bg-[#18181b] p-6 sm:p-8 rounded-2xl w-full border border-zinc-800 shadow-2xl">
+          <h2 className="text-2xl font-bold text-[#eab308] text-center mb-2">
+            בקשת הצטרפות
+          </h2>
+          <p className="text-zinc-400 text-center text-sm mb-6">
+            משאירים פרטים – ומקבלים את פרטי הגישה.
+          </p>
 
-      {isPopupOpen && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', zIndex: 1000, padding: '15px', direction: 'rtl'
-        }}>
-          <div style={{
-            background: '#1e293b', padding: 'clamp(20px, 6vw, 40px)', borderRadius: '20px',
-            maxWidth: '450px', width: '100%', position: 'relative',
-            border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 25px rgba(0,0,0,0.5)'
-          }}>
-            <button 
-              onClick={() => setIsPopupOpen(false)}
-              style={{
-                position: 'absolute', top: '10px', left: '15px',
-                background: 'transparent', border: 'none', color: '#fff',
-                fontSize: '2rem', cursor: 'pointer', lineHeight: '1'
-              }}
-            >
-              &times;
-            </button>
-            <h2 style={{ color: '#fff', marginBottom: '10px', textAlign: 'center', fontSize: 'clamp(1.4rem, 6vw, 1.8rem)', marginTop: '15px', lineHeight: '1.2' }}>
-              רוצים לגלות את הסודות?
-            </h2>
-            <p style={{ color: '#cbd5e1', textAlign: 'center', marginBottom: '20px', fontSize: 'clamp(0.9rem, 4vw, 1rem)', lineHeight: '1.4' }}>
-              השאירו את פרטיכם כאן למטה והצוות שלנו ייצור עמכם קשר בהקדם!
-            </p>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+            
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-white text-sm font-medium mr-1">שם מלא</label>
               <input
                 type="text"
                 name="name"
-                placeholder="שם מלא"
+                placeholder="ישראל ישראלי"
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                style={{
-                  padding: '15px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)', color: '#fff', fontSize: '1.1rem',
-                  outline: 'none'
-                }}
+                className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
               />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-white text-sm font-medium mr-1">אימייל</label>
               <input
                 type="email"
                 name="email"
-                placeholder="אימייל"
+                placeholder="name@example.com"
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                style={{
-                  padding: '15px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)', color: '#fff', fontSize: '1.1rem',
-                  outline: 'none'
-                }}
+                className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors text-right"
+                dir="rtl"
               />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-white text-sm font-medium mr-1">מספר טלפון</label>
               <input
                 type="tel"
                 name="phone"
-                placeholder="מספר טלפון"
+                placeholder="050-0000000"
                 required
                 pattern="^05\d[- ]?\d{7}$"
                 title="אנא הזן מספר נייד ישראלי תקין, לדוגמה 0501234567 או 050-1234567"
                 value={formData.phone}
                 onChange={handleInputChange}
-                style={{
-                  padding: '15px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'rgba(255,255,255,0.05)', color: '#fff', fontSize: '1.1rem',
-                  outline: 'none'
-                }}
+                className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors text-right"
+                dir="rtl"
               />
-              <button 
-                type="submit" 
-                disabled={isLoading}
-                style={{
-                  background: '#ff6b00', color: '#fff', border: 'none',
-                  padding: '15px', borderRadius: '10px', fontSize: '1.2rem',
-                  cursor: isLoading ? 'not-allowed' : 'pointer', marginTop: '10px',
-                  fontWeight: 'bold', opacity: isLoading ? 0.7 : 1, transition: 'all 0.2s'
-                }}
-              >
-                {isLoading ? 'שולח...' : 'למעבר לוואטסאפ'}
-              </button>
-            </form>
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-[#eab308] to-[#ca8a04] text-black font-bold text-lg rounded-lg px-4 py-3.5 mt-4 hover:opacity-90 transition-opacity flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'שולח...' : 'אני רוצה להיכנס'}
+            </button>
+
+          </form>
+
+          <div className="mt-6 flex items-center justify-center space-x-1.5 space-x-reverse text-zinc-500 text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#ca8a04]">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span>דיסקרטיות מלאה • ללא עלות • 18+</span>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
