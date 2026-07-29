@@ -36,7 +36,7 @@ export default function BlackjackAdvertorial() {
     } finally {
       setIsLoading(false);
       // Redirect to WhatsApp
-      const waNumber = "972535372160";
+      const waNumber = "972535372176";
       const message = encodeURIComponent("שלום, ספר לי עוד על זה");
       window.location.href = `https://wa.me/${waNumber}?text=${message}`;
     }
