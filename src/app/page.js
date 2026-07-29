@@ -60,9 +60,10 @@ export default function BlackjackAdvertorial() {
           className="cta" 
           style={{ 
             background: '#ff6b00', color: '#fff', textShadow: 'none', 
-            padding: '0 50px', fontSize: '1.5rem', height: '70px', 
+            padding: '0 clamp(20px, 5vw, 50px)', fontSize: 'clamp(1.2rem, 5vw, 1.5rem)', height: 'clamp(60px, 15vw, 70px)', 
             borderRadius: '15px', border: 'none', cursor: 'pointer',
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            width: '100%', maxWidth: '300px'
           }}
         >
           למידע נוסף
@@ -73,24 +74,29 @@ export default function BlackjackAdvertorial() {
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', zIndex: 1000, padding: '20px', direction: 'rtl'
+          justifyContent: 'center', zIndex: 1000, padding: '15px', direction: 'rtl'
         }}>
           <div style={{
-            background: '#1e293b', padding: '40px', borderRadius: '20px',
-            maxWidth: '400px', width: '100%', position: 'relative',
+            background: '#1e293b', padding: 'clamp(20px, 6vw, 40px)', borderRadius: '20px',
+            maxWidth: '450px', width: '100%', position: 'relative',
             border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 25px rgba(0,0,0,0.5)'
           }}>
             <button 
               onClick={() => setIsPopupOpen(false)}
               style={{
-                position: 'absolute', top: '15px', left: '20px',
+                position: 'absolute', top: '10px', left: '15px',
                 background: 'transparent', border: 'none', color: '#fff',
                 fontSize: '2rem', cursor: 'pointer', lineHeight: '1'
               }}
             >
               &times;
             </button>
-            <h2 style={{ color: '#fff', marginBottom: '20px', textAlign: 'center', fontSize: '1.8rem', marginTop: '10px' }}>השאירו פרטים</h2>
+            <h2 style={{ color: '#fff', marginBottom: '10px', textAlign: 'center', fontSize: 'clamp(1.4rem, 6vw, 1.8rem)', marginTop: '15px', lineHeight: '1.2' }}>
+              רוצים לגלות את הסודות?
+            </h2>
+            <p style={{ color: '#cbd5e1', textAlign: 'center', marginBottom: '20px', fontSize: 'clamp(0.9rem, 4vw, 1rem)', lineHeight: '1.4' }}>
+              השאירו את פרטיכם כאן למטה והצוות שלנו ייצור עמכם קשר בהקדם!
+            </p>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <input
                 type="text"
