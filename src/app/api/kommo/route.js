@@ -31,6 +31,9 @@ export async function POST(request) {
     const leadObject = {
       name: `Lead: ${name}`,
       _embedded: {
+          tags: [
+            { name: "google ads" }
+          ],
           contacts: [
             {
               first_name: name,
