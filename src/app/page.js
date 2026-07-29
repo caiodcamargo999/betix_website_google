@@ -65,7 +65,7 @@ export default function BlackjackAdvertorial() {
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center'
           }}
         >
-          שחק
+          למידע נוסף
         </button>
       </div>
 
