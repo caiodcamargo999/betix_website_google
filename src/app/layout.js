@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import Link from "next/link";
 
 export const metadata = {
   title: "הקהילה הפרטית של חובבי הבלאק ג'ק בישראל",
@@ -49,7 +50,32 @@ fbq('track', 'PageView');`,
             src="https://www.facebook.com/tr?id=2576042539502638&ev=PageView&noscript=1"
           />
         </noscript>
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <header className="w-full bg-[#09090b] border-b border-zinc-800/50 py-4 z-50 relative">
+            <div className="container mx-auto px-4 flex justify-between items-center">
+              <Link href="/" className="text-[#eab308] font-bold text-lg sm:text-xl flex items-center gap-2 hover:text-white transition-colors">
+                <span className="text-xl sm:text-2xl">♠️</span> הקהילה הפרטית
+              </Link>
+            </div>
+          </header>
+          <main className="flex-grow">
+            {children}
+          </main>
+          <footer className="w-full bg-[#09090b] border-t border-zinc-800 py-6 text-center text-zinc-500 text-sm">
+            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-4">
+              <Link href="/terms-of-use" className="hover:text-white transition-colors">
+                תקנון ותנאי שימוש
+              </Link>
+              <span className="hidden md:inline text-zinc-700">|</span>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                מדיניות פרטיות
+              </Link>
+            </div>
+            <div className="mt-4 text-xs text-zinc-600">
+              © {new Date().getFullYear()} כל הזכויות שמורות.
+            </div>
+          </footer>
+        </div>
         <Analytics />
       </body>
     </html>
