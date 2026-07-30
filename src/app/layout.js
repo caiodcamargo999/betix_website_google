@@ -2,8 +2,8 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
-  title: "BETIX | 100% בונוס בהפקדה הראשונה",
-  description: "BETIX - בונוס של 100% בהפקדה הראשונה, בכפוף לתנאי המבצע.",
+  title: "הקהילה הפרטית של חובבי הבלאק ג'ק בישראל",
+  description: "מקום סגור לאנשים שבאמת אוהבים את המשחק. משאירים פרטים – ומקבלים את פרטי הגישה.",
   robots: "index,follow",
 };
 
