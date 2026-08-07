@@ -1,46 +1,7 @@
 "use client";
-import { useState } from 'react';
 
 export default function BlackjackAdvertorial() {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/kommo', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-        }),
-      });
-      
-      if (!response.ok) {
-        console.error("Kommo API returned an error:", await response.text());
-      } else {
-        console.log("Lead successfully sent to Kommo.");
-      }
-    } catch (error) {
-      console.error("Network or parse error submitting lead:", error);
-    } finally {
-      setIsLoading(false);
-      // Redirect to WhatsApp
-      const waNumber = "972525372160";
-      const message = encodeURIComponent("שלום, ספר לי עוד על זה");
-      window.location.href = `https://wa.me/${waNumber}?text=${message}`;
-    }
-  };
+  const whatsappUrl = "https://wa.me/972559340547?text=" + encodeURIComponent("שלום, ספר לי עוד על זה");
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#09090b] font-sans relative overflow-hidden text-right text-white">
@@ -63,66 +24,27 @@ export default function BlackjackAdvertorial() {
 
           <div className="bg-[#18181b] p-5 sm:p-8 rounded-2xl w-full border border-zinc-800 shadow-2xl">
             <h2 className="text-xl sm:text-2xl font-bold text-[#eab308] text-center mb-2">
-              בקשת הצטרפות
+              הצטרפות לקהילה
             </h2>
             <p className="text-zinc-400 text-center text-sm mb-6">
-              משאירים פרטים – ומקבלים את פרטי הגישה.
+              לחצו על הכפתור כדי לשלוח לנו הודעה בוואטסאפ ולקבל את פרטי הגישה.
             </p>
 
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-              
-              <div className="flex flex-col space-y-1.5">
-                <label className="text-white text-sm font-medium mr-1">שם מלא</label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="ישראל ישראלי"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5">
-                <label className="text-white text-sm font-medium mr-1">אימייל</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors text-right"
-                  dir="rtl"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-1.5">
-                <label className="text-white text-sm font-medium mr-1">מספר טלפון</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="050-0000000"
-                  required
-                  pattern="^05\d[- ]?\d{7}$"
-                  title="אנא הזן מספר נייד ישראלי תקין, לדוגמה 0501234567 או 050-1234567"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full bg-[#09090b] border border-zinc-800 text-white placeholder-zinc-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition-colors text-right"
-                  dir="rtl"
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={isLoading}
-                className="w-full bg-gradient-to-r from-[#eab308] to-[#ca8a04] text-black font-bold text-lg rounded-lg px-4 py-3.5 mt-4 hover:opacity-90 transition-opacity flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
+            <div className="flex flex-col space-y-4">
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.fbq) {
+                    window.fbq('track', 'Contact');
+                  }
+                }}
+                className="w-full bg-gradient-to-r from-[#eab308] to-[#ca8a04] text-black font-bold text-lg rounded-lg px-4 py-3.5 mt-2 hover:opacity-90 transition-opacity flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.2)] text-center cursor-pointer"
               >
-                {isLoading ? 'שולח...' : 'אני רוצה להיכנס'}
-              </button>
-
-            </form>
+                אני רוצה להיכנס
+              </a>
+            </div>
 
             <div className="mt-6 flex items-center justify-center space-x-1.5 space-x-reverse text-zinc-500 text-xs">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#ca8a04]">
@@ -156,7 +78,7 @@ export default function BlackjackAdvertorial() {
             <div className="text-[#eab308] text-2xl sm:text-3xl mb-3 sm:mb-4">🔒</div>
             <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white">איך מצטרפים?</h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              ההצטרפות פשוטה ומהירה: משאירים פרטים בטופס למעלה, ומקבלים מיד קישור סודי להצטרפות לקבוצת הוואטסאפ הפרטית שלנו. ההצטרפות כרוכה באישור צוות הקהילה והיא מעל גיל 18 בלבד.
+              ההצטרפות פשוטה ומהירה: שולחים הודעה בוואטסאפ, ומקבלים מיד קישור סודי להצטרפות לקבוצת הוואטסאפ הפרטית שלנו. ההצטרפות כרוכה באישור צוות הקהילה והיא מעל גיל 18 בלבד.
             </p>
           </div>
         </div>
